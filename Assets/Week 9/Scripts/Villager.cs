@@ -14,7 +14,7 @@ public class Villager : MonoBehaviour
 
     protected Vector2 destination;
     Vector2 movement;
-    float speed = 3;
+    protected float speed = 3;
 
     void Start()
     {
@@ -68,7 +68,7 @@ public class Villager : MonoBehaviour
         //left click: move to the click location
         if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf)
         {
-            destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Mouseclicking();
         }
 
         animator.SetFloat("Movement", movement.magnitude);
@@ -90,4 +90,8 @@ public class Villager : MonoBehaviour
         return ChestType.Villager;
     }
 
+    protected void Mouseclicking()
+    {
+        destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 }
