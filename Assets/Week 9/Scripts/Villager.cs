@@ -58,17 +58,18 @@ public class Villager : MonoBehaviour
         if (movement.magnitude < 0.1)
         {
             movement = Vector2.zero;
+            speed = 3;
         }
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //left click: move to the click location
         if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf)
         {
-            Mouseclicking();
+            destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         animator.SetFloat("Movement", movement.magnitude);
@@ -88,10 +89,5 @@ public class Villager : MonoBehaviour
     public virtual ChestType CanOpen()
     {
         return ChestType.Villager;
-    }
-
-    protected void Mouseclicking()
-    {
-        destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

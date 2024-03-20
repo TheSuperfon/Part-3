@@ -1,20 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Thief : Villager
 {
-    public GameObject DaggerPrefab;
-    public Transform DaggerspawnPoint;
-    public Transform DaggerspawnPoint2;
+    public GameObject knifePrefab;
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public float Dashspeed = 7;
+    Coroutine dashing;
     protected override void Attack()
     {
-        Mouseclicking();
-        speed = 12;
+        //dash towards mouse
+        destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        if (dashing != null )
+        {
+            StopCoroutine(dashing);
+        }
+        dashing = StartCoroutine(Dash());
+
+    }
+
+
+    IEnumerator Dash()
+    {
+        speed += Dashspeed;
+
+        while(speed > 3)
+        {
+            yield return null;
+        }
+
+        
         base.Attack();
-        SpawnDagger();
-        Invoke("Spawn2ndDagger", 0.2f);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(knifePrefab, spawnPoint1.position, spawnPoint1.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(knifePrefab, spawnPoint2.position, spawnPoint2.rotation);
+        
     }
 
 
@@ -23,17 +47,4 @@ public class Thief : Villager
     {
         return ChestType.Thief;
     }
-
-    void SpawnDagger()
-    {
-        Instantiate(DaggerPrefab, DaggerspawnPoint.position, DaggerspawnPoint.rotation);
-
-    }
-    void Spawn2ndDagger()
-    {
-        Instantiate(DaggerPrefab, DaggerspawnPoint2.position, DaggerspawnPoint2.rotation);
-        speed = 3;
-        destination = transform.position;
-    }
-
 }
