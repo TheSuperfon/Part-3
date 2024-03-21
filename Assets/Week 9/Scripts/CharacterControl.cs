@@ -20,6 +20,8 @@ public class CharacterControl : MonoBehaviour
     public Transform Merchanttransform;
     public string villagername;
     public Slider slider;
+    float changevalue;
+    Vector3 changeVector;
     public static void SetSelectedVillager(Villager villager)
     {
         if(SelectedVillager != null)
@@ -37,6 +39,7 @@ public class CharacterControl : MonoBehaviour
         //{
         //    currentSelection.text = SelectedVillager.GetType().ToString();
         //}
+        changeVector = new Vector3(changevalue,changevalue,0f);
     }
     private void Start()
     {
@@ -74,19 +77,22 @@ public class CharacterControl : MonoBehaviour
 
     public void Sizechange(Single Change)
     {
-
+        changevalue = Change;
         if (villagername == ("Thief"))
         {
-            //Thieftransform.localScale -= (Change;
+            
+            Thieftransform.localScale += changeVector;
 
         }
         if (villagername == ("Merchant"))
         {
-            //SetSelectedVillager(TheMerchant);
+            
+            Merchanttransform.localScale += changeVector;
+            
         }
         if (villagername == ("Archer"))
         {
-            //SetSelectedVillager(TheArcher);
+            Archertransform.localScale += changeVector;
         }
 
 
