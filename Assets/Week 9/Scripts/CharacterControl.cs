@@ -15,7 +15,11 @@ public class CharacterControl : MonoBehaviour
     public Villager TheThief;
     public Villager TheArcher;
     public Villager TheMerchant;
+    public Transform Thieftransform;
+    public Transform Archertransform;
+    public Transform Merchanttransform;
     public string villagername;
+    public Slider slider;
     public static void SetSelectedVillager(Villager villager)
     {
         if(SelectedVillager != null)
@@ -65,6 +69,28 @@ public class CharacterControl : MonoBehaviour
         }
 
 
-        //CharacterControl.SetSelectedVillager(Thief);
+        
     }
+
+    public void Sizechange(Single Change)
+    {
+
+        if (villagername == ("Thief"))
+        {
+            //Thieftransform.localScale -= (Change;
+
+        }
+        if (villagername == ("Merchant"))
+        {
+            //SetSelectedVillager(TheMerchant);
+        }
+        if (villagername == ("Archer"))
+        {
+            //SetSelectedVillager(TheArcher);
+        }
+
+
+        
+    }
+
 }
