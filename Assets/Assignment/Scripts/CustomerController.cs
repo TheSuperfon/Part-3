@@ -7,7 +7,7 @@ public class CustomerController : MonoBehaviour
 {
     public static int CustomerChoose;
     public TextMeshProUGUI Score;
-    public float realscore;
+    public static float realscore;
     public static Customer ChosenCustomer;
     public Customer adultone;
     public Customer childOne;
@@ -33,10 +33,6 @@ public class CustomerController : MonoBehaviour
 
     }
 
-    public static void ActivateCustomer()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

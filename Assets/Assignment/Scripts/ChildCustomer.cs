@@ -13,10 +13,6 @@ public class ChildCustomer : Customer
             beerOption = false;
             //Debug.Log("Reject");
         }
-        /*if ((SpeechBubble.activeInHierarchy) == true)
-        {
-            Debug.Log("childSpeeking");
-        }*/
-        
+               
     }
 }
