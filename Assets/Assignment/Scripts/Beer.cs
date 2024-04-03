@@ -7,7 +7,7 @@ public class Beer : Drinks
 {
     protected override void OnMouseDown()
     {
-        Debug.Log("beer");
+        //Debug.Log("beer");
         CustomerController.PlayerDrinkChoice = "beer";
     }
 }

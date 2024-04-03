@@ -54,7 +54,8 @@ public class CustomerController : MonoBehaviour
 
             //}
             realscore += 1;
-            PlayerDrinkChoice = "none";
+            StartCoroutine(AnotherStringReset(1));
+            
         }
 
         if (PlayerDrinkChoice != "none")
@@ -76,13 +77,13 @@ public class CustomerController : MonoBehaviour
         if (choose == false) return;
         if (CustomerChoose <= 5)
         {
-            Debug.Log(CustomerChoose);
+            //Debug.Log(CustomerChoose);
             adultone.StartBarTrip();
  
         }
         if (CustomerChoose > 5)
         {
-            Debug.Log(CustomerChoose);
+            //Debug.Log(CustomerChoose);
             childOne.StartBarTrip();
         }
 
@@ -96,6 +97,12 @@ public class CustomerController : MonoBehaviour
             PlayerDrinkChoice = "none";
             
         }
+    }
+    public IEnumerator AnotherStringReset(float seconds)
+    {
+         PlayerDrinkChoice = "Served";
+         yield return new WaitForSeconds(seconds);
+         PlayerDrinkChoice = "none";
     }
 
 

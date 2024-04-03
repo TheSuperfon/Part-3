@@ -38,7 +38,7 @@ public class Customer : MonoBehaviour
 
     public void StartBarTrip()
     {
-        Debug.Log("ok");
+        //Debug.Log("ok");
         CustomerController.choose = false;//since the customer has been chosen stops customercontroller from continuing to choose
         StartCoroutine(ToTheBar(Random.Range(0.5f, 3f))); //starts the customer going to the bar and randomizes how fast they walk to the bar
 
