@@ -13,6 +13,8 @@ public class CustomerController : MonoBehaviour
     public Customer childOne;
     public static bool choose;
 
+    public static bool MinusPoint;
+
     bool OKToReset;
     
     public static string PlayerDrinkChoice;
@@ -20,6 +22,7 @@ public class CustomerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MinusPoint = false;
         PlayerDrinkChoice = "none";
         CustomerDrinkchoice = "zero";
         realscore = 0;
@@ -69,7 +72,11 @@ public class CustomerController : MonoBehaviour
 
         }
 
-        
+        if (MinusPoint == true)
+        {
+            realscore -= 2;
+            MinusPoint = false;
+        }
 
 
         Score.text = realscore.ToString();
@@ -105,5 +112,6 @@ public class CustomerController : MonoBehaviour
          PlayerDrinkChoice = "none";
     }
 
+    
 
 }

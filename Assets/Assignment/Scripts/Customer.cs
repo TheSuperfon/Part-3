@@ -19,21 +19,37 @@ public class Customer : MonoBehaviour
     public bool adultChosen;
 
     public int DrinkChoice;
+    public bool beerOption;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        beerOption = false;
          
         Delay = 0.2f;
 
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        /*if (CustomerController.PlayerDrinkChoice == "Reject")
+        {
+            //DeclinedDrink();
+            CustomerController.PlayerDrinkChoice = "Rejection";
+        }*/
+
+
+        if (beerOption == true)
+        {
+            beerImage.SetActive(true);
+            CustomerController.CustomerDrinkchoice = "beer";
+            beerOption = false;
+
+        }
+
+
     }
 
     public void StartBarTrip()
@@ -69,8 +85,11 @@ public class Customer : MonoBehaviour
         choiceOption = Random.Range(1, 3);
         if (choiceOption == 1)
         {
-            beerImage.SetActive(true);
-            CustomerController.CustomerDrinkchoice = "beer";
+            beerOption = true;
+
+
+
+            
         }
         if (choiceOption == 2)
         {
@@ -83,7 +102,7 @@ public class Customer : MonoBehaviour
             CustomerController.CustomerDrinkchoice = "juice";
         }
 
-        DrinkChoice = Random.Range(1, 3); //randomly choose choice of drink 
+        DrinkChoice = Random.Range(1, 4); //randomly choose choice of drink 
         yield return new WaitForSeconds(OrderTime); //temporary way of making the customer wait for order
         while (remainingtime < OrderTime) //will use while loop for actual waiting customer as these can be broken if the correct order is given
         {
@@ -109,5 +128,35 @@ public class Customer : MonoBehaviour
 
     }
 
+    /*
+    protected virtual void DeclinedDrink()
+    {
+        
+        Debug.Log("oky");
+        StartCoroutine(EarlyLeave(0));
 
+
+    }
+
+
+    protected virtual IEnumerator EarlyLeave(float Leavetime)
+    {
+        StopCoroutine("ToTheBar");
+        StopCoroutine("OrderAtBar");
+        SpeechBubble.SetActive(false);
+        beerImage.SetActive(false);
+        SodaImage.SetActive(false);
+        juiceImage.SetActive(false);
+        CustomerController.CustomerDrinkchoice = "zero";
+        while (Leavetime < 3f) //same as the tothebar while loop lerp except in reverse as the customer is leaving the bar
+        {
+            transform.position = Vector3.Lerp(Endposition.position, Starposition.position, (Leavetime));
+            Leavetime += Time.deltaTime;
+            yield return null;
+        }
+
+        CustomerController.CustomerChoose = Random.Range(2, 10); //randomizes value so that it will be either child or adult customer
+        CustomerController.choose = true;//allows the customercontroller update to be functional and can choose to activate child or adult
+
+    }*/
 }
