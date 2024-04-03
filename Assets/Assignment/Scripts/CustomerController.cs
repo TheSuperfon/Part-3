@@ -65,7 +65,7 @@ public class CustomerController : MonoBehaviour
         {
             if (OKToReset == true)
             {
-                StartCoroutine(StringReset(1));
+                StringReset();
                 
 
             }
@@ -74,7 +74,7 @@ public class CustomerController : MonoBehaviour
 
         if (MinusPoint == true)
         {
-            realscore -= 2;
+            realscore -= 1;
             MinusPoint = false;
         }
 
@@ -96,20 +96,21 @@ public class CustomerController : MonoBehaviour
 
     }
 
-    public IEnumerator StringReset(float seconds)
+    public void StringReset()
     {
-        yield return new WaitForSeconds(seconds);
-        if (OKToReset == false)
+        //yield return new WaitForSeconds(seconds);
+        if (OKToReset == true)
         {
             PlayerDrinkChoice = "none";
-            
+            OKToReset = false;
         }
     }
     public IEnumerator AnotherStringReset(float seconds)
     {
          PlayerDrinkChoice = "Served";
          yield return new WaitForSeconds(seconds);
-         PlayerDrinkChoice = "none";
+         OKToReset = false;
+         //PlayerDrinkChoice = "none";
     }
 
     

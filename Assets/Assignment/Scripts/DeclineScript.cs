@@ -8,5 +8,10 @@ public class DeclineScript : Drinks
     {
         //Debug.Log("Reject");
         CustomerController.PlayerDrinkChoice = "Reject";
+        if ((CustomerController.CustomerDrinkchoice) != "Reject")
+        {
+            Incorrect();
+
+        }
     }
 }

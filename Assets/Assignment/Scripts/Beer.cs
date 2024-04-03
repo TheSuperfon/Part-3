@@ -9,5 +9,12 @@ public class Beer : Drinks
     {
         //Debug.Log("beer");
         CustomerController.PlayerDrinkChoice = "beer";
+
+        if ((CustomerController.CustomerDrinkchoice) != "beer")
+        {
+            Incorrect();
+
+        }
+
     }
 }

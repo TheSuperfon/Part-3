@@ -9,14 +9,14 @@ public class ChildCustomer : Customer
         if (beerOption == true)
         {
             beerImage.SetActive(true);
-            CustomerController.CustomerDrinkchoice = "Reject";
+            CustomerController.CustomerDrinkchoice = "Reject"; //the function unique to child which means the only way to match and get points is to reject the child since it overrode "beer"
             beerOption = false;
-            Debug.Log("Reject");
+            //Debug.Log("Reject");
         }
-        if ((SpeechBubble.activeInHierarchy) == true)
+        /*if ((SpeechBubble.activeInHierarchy) == true)
         {
             Debug.Log("childSpeeking");
-        }
+        }*/
         
     }
 }

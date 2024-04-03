@@ -8,5 +8,11 @@ public class Soda : Drinks
     {
         //Debug.Log("soda");
         CustomerController.PlayerDrinkChoice = "soda";
+
+        if ((CustomerController.CustomerDrinkchoice) != "soda")
+        {
+            Incorrect();
+
+        }
     }
 }

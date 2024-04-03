@@ -23,4 +23,11 @@ public class Drinks : MonoBehaviour
         Debug.Log("mouse");
     }
 
+    public void Incorrect()
+    {
+        CustomerController.MinusPoint = true;
+
+
+    }
+
 }
