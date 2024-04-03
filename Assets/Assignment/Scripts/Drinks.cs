@@ -15,4 +15,9 @@ public class Drinks : MonoBehaviour
     {
         
     }
+    protected virtual void OnMouseDown()
+    {
+        Debug.Log("mouse");
+    }
+
 }

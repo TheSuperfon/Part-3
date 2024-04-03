@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 71099243}
   - component: {fileID: 71099246}
   - component: {fileID: 71099245}
+  - component: {fileID: 71099247}
   m_Layer: 0
   m_Name: Soda
   m_TagString: Untagged
@@ -463,6 +464,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &71099247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71099242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35281deff06c8b64bbd27e87970884ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &209230083
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,10 +604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90856b90b51e80c41b44edadcc943098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score: {fileID: 1064759630}
+  realscore: 0
   adultone: {fileID: 788942231435669456}
   childOne: {fileID: 5115195273549534242}
-  PlayerDrinkChoice: 
-  CustomerDrinkchoice: 
 --- !u!1 &270123166
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +955,7 @@ GameObject:
   - component: {fileID: 522450826}
   - component: {fileID: 522450828}
   - component: {fileID: 522450827}
+  - component: {fileID: 522450829}
   m_Layer: 0
   m_Name: Juicebox
   m_TagString: Untagged
@@ -1039,6 +1053,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49317646, y: 0.9164921}
   m_EdgeRadius: 0
+--- !u!114 &522450829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522450825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8270f8a07b1a4094296d0afd776b10c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597880200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,6 +2503,7 @@ GameObject:
   - component: {fileID: 1120172908}
   - component: {fileID: 1120172910}
   - component: {fileID: 1120172909}
+  - component: {fileID: 1120172911}
   m_Layer: 0
   m_Name: Beer
   m_TagString: Untagged
@@ -2572,6 +2599,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1120172911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120172907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747da5b8fd00c734484e01da39bffadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1270410730
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,7 +3936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 37.11, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1927324841
@@ -3920,7 +3959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Number of satisfied customers:'
+  m_text: 'satisfied customers points:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4894,6 +4933,10 @@ MonoBehaviour:
   Endposition: {fileID: 911728970}
   SpeechBubble: {fileID: 4652186633976191070}
   angerobject: {fileID: 8486770219908231647}
+  beerImage: {fileID: 4463417110638910219}
+  SodaImage: {fileID: 3650407393472969702}
+  juiceImage: {fileID: 1568813744970745698}
+  choiceOption: 0
   Delay: 0
   CustomerWait: 0
   walkspeed: 0
@@ -7571,6 +7614,10 @@ MonoBehaviour:
   Endposition: {fileID: 911728970}
   SpeechBubble: {fileID: 5819298121965473650}
   angerobject: {fileID: 251262067597095101}
+  beerImage: {fileID: 6151244770209480668}
+  SodaImage: {fileID: 7907229324921981735}
+  juiceImage: {fileID: 7982978230968117789}
+  choiceOption: 0
   Delay: 0
   CustomerWait: 0
   walkspeed: 0

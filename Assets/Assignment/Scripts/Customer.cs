@@ -8,6 +8,10 @@ public class Customer : MonoBehaviour
     public Transform Endposition;
     public GameObject SpeechBubble;
     public GameObject angerobject;
+    public GameObject beerImage;
+    public GameObject SodaImage;
+    public GameObject juiceImage;
+    public float choiceOption;
     public float Delay;
     public float CustomerWait;
     public float walkspeed;
@@ -21,10 +25,9 @@ public class Customer : MonoBehaviour
     void Start()
     {
         
-        //walkspeed = 
+         
         Delay = 0.2f;
-        //CustomerWait = 
-        //StartCoroutine(ToTheBar(Random.Range(0.5f, 3f))); 
+
     }
 
     // Update is called once per frame
@@ -55,24 +58,45 @@ public class Customer : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(OrderAtBar(Random.Range(3f, 6f))); //randomizes how long customers will spend ordering
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(OrderAtBar(Random.Range(2f, 3.5f))); //randomizes how long customers will spend ordering
     }
 
     protected virtual IEnumerator OrderAtBar(float OrderTime)
     {
-        yield return new WaitForSeconds(Delay);
         float remainingtime = 0; //resets remaining time so that customer can get out of here when the time comes
         SpeechBubble.SetActive(true); //sets the speech bubble active so that they can say order 
+        choiceOption = Random.Range(1, 3);
+        if (choiceOption == 1)
+        {
+            beerImage.SetActive(true);
+            CustomerController.CustomerDrinkchoice = "beer";
+        }
+        if (choiceOption == 2)
+        {
+            SodaImage.SetActive(true);
+            CustomerController.CustomerDrinkchoice = "soda";
+        }
+        if (choiceOption == 3)
+        {
+            juiceImage.SetActive(true);
+            CustomerController.CustomerDrinkchoice = "juice";
+        }
+
         DrinkChoice = Random.Range(1, 3); //randomly choose choice of drink 
         yield return new WaitForSeconds(OrderTime); //temporary way of making the customer wait for order
-        /*while (remainingtime < OrderTime) //will use while loop for actual waiting customer as these can be broken if the correct order is given
+        while (remainingtime < OrderTime) //will use while loop for actual waiting customer as these can be broken if the correct order is given
         {
             
             remainingtime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
-        }*/
+        }
+        remainingtime = 0;
         SpeechBubble.SetActive(false);
+        beerImage.SetActive(false);
+        SodaImage.SetActive(false);
+        juiceImage.SetActive(false);
+        CustomerController.CustomerDrinkchoice = "zero";
         while (remainingtime < 1f) //same as the tothebar while loop lerp except in reverse as the customer is leaving the bar
         {
             transform.position = Vector3.Lerp(Endposition.position, Starposition.position, (remainingtime));

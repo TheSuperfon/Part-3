@@ -1,26 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CustomerController : MonoBehaviour
 {
     public static int CustomerChoose;
-
-    //public List<Customer> CustomerList;
+    public TextMeshProUGUI Score;
+    public float realscore;
     public static Customer ChosenCustomer;
     public Customer adultone;
     public Customer childOne;
     public static bool choose;
+
+    bool OKToReset;
     
-    public string PlayerDrinkChoice;
-    public string CustomerDrinkchoice;
+    public static string PlayerDrinkChoice;
+    public static string CustomerDrinkchoice;
     // Start is called before the first frame update
     void Start()
     {
+        PlayerDrinkChoice = "none";
+        CustomerDrinkchoice = "zero";
+        realscore = 0;
         choose = true;
         CustomerChoose = 5;
+        OKToReset = true;
         //adultone.ToTheBar(Random.Range(0.5f, 3f));
-        
+
     }
 
     public static void ActivateCustomer()
@@ -38,11 +45,38 @@ public class CustomerController : MonoBehaviour
             
         }*/
 
+        if (PlayerDrinkChoice == CustomerDrinkchoice)
+        {
+            //if (OKToReset == true)
+            //{
+            //StartCoroutine(StringReset(1));
+
+
+            //}
+            realscore += 1;
+            PlayerDrinkChoice = "none";
+        }
+
+        if (PlayerDrinkChoice != "none")
+        {
+            if (OKToReset == true)
+            {
+                StartCoroutine(StringReset(1));
+                
+
+            }
+
+        }
+
+        
+
+
+        Score.text = realscore.ToString();
+
         if (choose == false) return;
         if (CustomerChoose <= 5)
         {
             Debug.Log(CustomerChoose);
-            //chosenOne. ;
             adultone.StartBarTrip();
  
         }
@@ -54,9 +88,14 @@ public class CustomerController : MonoBehaviour
 
     }
 
-    public void AdultChosen()
+    public IEnumerator StringReset(float seconds)
     {
-        
+        yield return new WaitForSeconds(seconds);
+        if (OKToReset == false)
+        {
+            PlayerDrinkChoice = "none";
+            
+        }
     }
 
 
